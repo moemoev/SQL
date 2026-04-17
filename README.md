@@ -1,112 +1,119 @@
-# 🗄️ SQL & Database Fundamentals
+## 📘 Databases Introduction: Data Definition and Data Types
 
-## 📘 Introduction to Databases
-
-It is one thing to store data, but another to manage and manipulate it efficiently.
+It is one thing to store data, and another to manage it.
 
 ---
 
-## ⚠️ Problems with Flat File Storage
+## ⚠️ Problems with Flat File Storage (Files)
 
 - Size limitations  
 - Difficult updates  
-- Data accuracy issues  
+- Accuracy issues  
 - Access control limitations  
 
 ---
 
 ## 🧠 What is a DBMS?
 
-**DBMS (Database Management System)** is a system optimized for storing, searching, and processing data.
+**DBMS (Database Management System)** is a system optimized for searching and processing data.
 
-- We do not access files directly
-- We send queries to the DBMS engine
-- The engine processes requests and returns results
-- Communication happens via client-server model (TCP/IP even locally)
+- We do not access files directly  
+- The DBMS handles all file operations  
+- We send queries to the DBMS engine  
+- The engine processes the request, retrieves data from files, and returns results  
+
+Communication is typically based on a client-server model (even locally via TCP/IP).
 
 ---
 
-## 🏗️ RDBMS (Relational DBMS)
+## 🏗️ RDBMS
 
-A system that stores data in structured tables with relationships between them.
+**RDBMS (Relational Database Management System)** = data + database engine working together.
 
 ---
 
 ## 🔄 SQL vs NoSQL
 
-- **SQL (Relational Databases)**  
-  Best for structured data and vertical scaling (stronger machine)
+- **SQL** → used for vertical scaling (upgrading a single machine)
+- **NoSQL** → used for horizontal scaling (adding more machines)
 
-- **NoSQL (Non-relational Databases)**  
-  Best for horizontal scaling (more machines)
-
----
-
-## 🧾 Structure of SQL Language
-
-SQL is designed to read like natural language.
-
-### Components:
-- **Queries** → SELECT, ALTER TABLE, etc.
-- **Clauses** → WHERE, ORDER BY, etc.
-- **Expressions** → salary * 1.1
-- **Predicates** → job_title = 'Cashier'
-- **Statements** → full SQL commands
+SQL syntax is designed to read like natural language sentences.
 
 ---
 
-## 📂 SQL Categories
+## 🧾 Components of a SQL Query
+
+- **Queries** → ALTER TABLE, SELECT, ALTER COLUMN, etc.  
+- **Clauses** → UPDATE, DELETE, WHERE, etc.  
+- **Expressions** → salary * 1.1  
+- **Predicates** → job_title = "Cashier"  
+- **Statements** → full commands like UPDATE ... SET ... WHERE  
+
+---
+
+## 📂 SQL Logical Categories
+
+SQL is divided into four main categories:
 
 ### 1. Data Definition Language (DDL)
-Defines structure of data:
-- Tables
-- Schemas
-- Relationships
+Defines data structure:
+- How data looks
+- How tables are structured
+- Relationships between data
 
 ### 2. Data Manipulation Language (DML)
 CRUD operations:
-- Create
 - Read
+- Create
 - Update
 - Delete
 
 ### 3. Data Control Language (DCL)
-Controls access permissions.
+Controls access permissions to data
 
 ### 4. Transaction Control Language (TCL)
-Manages transactions (commit / rollback)
+Determines whether queries are executed as a group or individually
 
 ---
 
-## 🔑 Database Concepts
+## 🔗 Why We Use Relationships
 
-### Keys
-- Primary Key → unique identifier
-- Foreign Key → links tables
+- Provide abstraction
+- Reduce data duplication
+- Increase flexibility
 
-### ER Diagrams
-Visual representation of database structure and relationships.
-
----
-
-## 📊 Data Types
-
-- INT → integer values
-- DECIMAL / NUMERIC → fixed precision numbers
-- REAL / DOUBLE → floating point numbers
-- SERIAL → auto-incrementing integer
-- IDENTITY → controlled auto-increment
-- CHAR / VARCHAR / TEXT → string types
-- BLOB → binary data
-- DATE → YYYY-MM-DD
-- TIME → time only
-- TIMESTAMP → date + time
-- TIMESTAMPTZ → timestamp with timezone
+We avoid empty records where possible, although sometimes null values are valid (e.g. middle name).
 
 ---
 
-## 🧮 CRUD Operations
+## 🔑 Keys
 
-### SELECT (Read)
-```sql
-SELECT * FROM project WHERE start_date = '2023-06-01';
+- **Primary Key** → always unique identifier
+- **Foreign Key** → links tables together
+
+---
+
+## 📊 ER Diagrams
+
+Entity-Relationship diagrams help visualize:
+- Database structure
+- Table relationships
+
+---
+
+## 🧮 Data Types
+
+- **INT** → integer values (small / int / big variants)
+- **DECIMAL / NUMERIC** → fixed precision numbers
+- **REAL** → lower precision floating point
+- **DOUBLE** → high precision floating point
+- **SERIAL** → auto-incrementing number (manual override possible)
+- **GENERATED ALWAYS AS IDENTITY** → auto-incrementing number (no manual override allowed)
+- **CHAR(n)** → fixed-length string (up to 255 chars)
+- **VARCHAR(n)** → variable-length string (up to ~65,535 chars)
+- **TEXT** → large text field (up to ~65,535 chars)
+- **BLOB** → binary large object (files/data)
+- **DATE** → date only (YYYY-MM-DD)
+- **TIME** → time only
+- **TIMESTAMP** → date and time
+- **TIMESTAMPTZ** → timestamp with timezone

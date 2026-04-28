@@ -32,6 +32,7 @@ VALUES
 	('Jane Doe', '(408)-111-1235', 'jane.doe@bluebird.dev', 1),
 	('David Wright', '(408)-222-1234', 'david.wright@dolphin.dev', 2);
 
-DELETE FROM
-	customers
-WHERE id = 1;
+-- Delete a customer to display behaviour
+
+DELETE FROM customers
+	WHERE id = 1;
